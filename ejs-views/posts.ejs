@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+  <%- include('./partials/head.ejs') %>
+
+<body>
+  <div class="posts">
+    <%- include('./partials/nav.ejs') %>
+    <h1>Posts:</h1>
+    <ul>
+      <% if (posts.length) { %>
+        <% posts.forEach(({ id, title, createdAt, text, author }) => { %>
+          <li>
+            <article>
+              <div class="post-header">
+                <h2>
+                  <a href="/posts/<%= id %>"><%= title %></a>
+                </h2>
+                <button class="btn-delete" data-id="<%= id %>">
+                  <i class="fas fa-trash-alt" data-id="<%= id %>"></i>
+                </button>
+              </div>
+              <p><%= text %></p>
+              <div class="info">
+                <p><%= createdAt.toLocaleDateString() %></p>
+                <p><%= author %></p>
+              </div>
+            </article>
+          </li>
+        <% }) %>
+      <% } %>  
+    </ul>
+  </div>
+
+  <script>
+    document.addEventListener('click', (e) => {
+      const id = e.target?.dataset?.id || null;
+      if (id) {
+        fetch(`/posts/${id}`, {
+          method: 'DELETE',
+        }).then(() => {
+          window.location.reload();
+        });
+      }
+    });
+  </script>
+</body>
+</html>
+
+  <style>
+
+    .post-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-direction: row;
+    }
+
+    .btn-delete {
+      padding: 10px;
+      border-radius: 8px;
+      background-color: aqua;
+      border: none;
+    }
+    
+    .posts {
+      padding: 100px 100px;
+    }
+
+
+    h1 {
+      text-transform: uppercase;
+    }
+
+    li {
+      list-style: none;
+    }
+
+    ul {
+      padding: 0;
+    }
+
+    a {
+      text-decoration: none;
+      color: #fff;
+    }
+
+    article {
+      background-color: rgba(0,0,0,0.4);
+      padding: 50px;
+      border-radius: 3px;
+      margin-bottom: 50px;
+      border-radius: 18px;
+    }
+
+    .info {
+      display: flex;
+      justify-content: space-between;
+    }
+
+    h2 a {
+      color: aqua;
+    }
+  </style>

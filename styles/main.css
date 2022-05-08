@@ -1,0 +1,130 @@
+    body {
+        /* display: flex; */
+        min-height: 100vh;
+        /* align-items: center; */
+        justify-content: center;
+        flex-direction: column;
+        font-family: 'Montserrat', sans-serif;
+        font-size: 20px;
+        color: #fff;
+        background: linear-gradient(-45deg, #562111, #6b1134, #136482, #076a53);
+        background-size: 400% 400%;
+        animation: gradient 12s ease infinite;
+        height: 100vh;
+    }
+
+    @keyframes gradient {
+        0% {
+            background-position: 0% 50%;
+        }
+
+        50% {
+            background-position: 100% 50%;
+        }
+
+        100% {
+            background-position: 0% 50%;
+        }
+    }
+
+
+    h1 {
+        text-transform: uppercase;
+    }
+
+    .align-center {
+        align-items: center;
+    }
+
+    .d-flex {
+        display: flex;
+    }
+
+    nav {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        min-height: 60px;
+        display: flex;
+        justify-content: flex-end;
+        background-color: rgba(0, 0, 0, 0.7);
+    }
+
+    nav ul {
+        margin: 0;
+        padding: 0;
+        display: flex;
+    }
+
+    nav li {
+        list-style: none;
+    }
+
+    nav a {
+        text-decoration: none;
+        color: #fff;
+        min-height: 60px;
+        display: block;
+        padding: 10px 20px;
+        line-height: 60px;
+    }
+
+    .span-container {
+        width: 100px;
+        height: 100px;
+        transform: translate(-50% -50%);
+        position: absolute;
+        top: 60%;
+    }
+
+    .animate {
+        /* display: block; */
+        position: absolute;
+        width: 40%;
+        height: 40%;
+        border-radius: 50%;
+        animation: speed 2s infinite ease-in-out;
+    }
+
+    .one {
+        background: #c9ba12;
+        animation-delay: 1.5s;
+    }
+
+    .two {
+        background: #a11cc7;
+        animation-delay: 1s;
+    }
+
+    .three {
+        background: #237ead;
+        animation-delay: 0.5s;
+    }
+
+    .four {
+        background: #e0bcbc;
+    }
+
+    @keyframes speed {
+        0% {
+            transform: translate(0%);
+            border-radius: 50%;
+        }
+
+        25% {
+            transform: translate(150%) scale(0.5);
+            border-radius: 0%;
+        }
+
+        50% {
+            transform: translate(150%, 150%);
+            border-radius: 50%;
+        }
+
+        75% {
+            transform: translate(0, 150%) scale(0.5);
+            border-radius: 0%;
+        }
+    }
+
